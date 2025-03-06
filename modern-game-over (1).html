@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Game Over Screen</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+    }
+    
+    .game-over-container {
+      width: 320px;
+      padding: 2.5rem;
+      border-radius: 20px;
+      background: rgba(30, 30, 60, 0.9);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      animation: fadeIn 0.5s ease-out, floatAnimation 3s ease-in-out infinite;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes floatAnimation {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .game-over-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: white;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      letter-spacing: 2px;
+    }
+    
+    .score-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.2rem;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .score-value {
+      font-size: 4rem;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      margin: 0.5rem 0;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    
+    .best-score {
+      font-size: 1rem;
+      color: #9fafca;
+      margin-bottom: 0.5rem;
+    }
+    
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .btn {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .btn:active {
+      transform: scale(0.95);
+    }
+    
+    .revive-btn {
+      background: linear-gradient(90deg, #00c853, #00e676);
+      color: #212121;
+      box-shadow: 0 4px 15px rgba(0, 230, 118, 0.4);
+    }
+    
+    .revive-btn:hover {
+      box-shadow: 0 7px 20px rgba(0, 230, 118, 0.6);
+      transform: translateY(-3px);
+    }
+    
+    .new-game-btn {
+      background: linear-gradient(90deg, #ff4081, #f50057);
+      color: white;
+      box-shadow: 0 4px 15px rgba(245, 0, 87, 0.4);
+    }
+    
+    .new-game-btn:hover {
+      box-shadow: 0 7px 20px rgba(245, 0, 87, 0.6);
+      transform: translateY(-3px);
+    }
+    
+    .trophy-icon {
+      color: gold;
+      font-size: 1.2rem;
+      margin-right: 5px;
+    }
+    
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 2s infinite;
+    }
+    
+    @keyframes twinkle {
+      0% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="game-over-container">
+    <!-- Decorative sparkles -->
+    <div class="sparkle" style="width: 4px; height: 4px; top: 10%; left: 10%; animation-delay: 0.2s;"></div>
+    <div class="sparkle" style="width: 6px; height: 6px; top: 20%; left: 80%; animation-delay: 0.5s;"></div>
+    <div class="sparkle" style="width: 3px; height: 3px; top: 60%; left: 30%; animation-delay: 0.7s;"></div>
+    <div class="sparkle" style="width: 5px; height: 5px; top: 75%; left: 85%; animation-delay: 1s;"></div>
+    
+    <h1 class="game-over-title">Game Over</h1>
+    
+    <div class="score-section">
+      <div>Score</div>
+      <div class="score-value">100</div>
+      <div class="best-score">
+        <span class="trophy-icon">🏆</span>Best Score: 100
+      </div>
+    </div>
+    
+    <div class="buttons">
+      <button class="btn revive-btn">Revive</button>
+      <button class="btn new-game-btn">New Game</button>
+    </div>
+  </div>
+  
+  <!-- Add some dynamic sparkles with JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Create random sparkles
+      const container = document.querySelector('.game-over-container');
+      
+      for (let i = 0; i < 15; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        
+        // Random sizing and positioning
+        const size = Math.random() * 5 + 2;
+        sparkle.style.width = `${size}px`;
+        sparkle.style.height = `${size}px`;
+        sparkle.style.top = `${Math.random() * 100}%`;
+        sparkle.style.left = `${Math.random() * 100}%`;
+        sparkle.style.animationDelay = `${Math.random() * 2}s`;
+        
+        container.appendChild(sparkle);
+      }
+      
+      // Add hover sound effect
+      const buttons = document.querySelectorAll('.btn');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+          button.style.transform = 'translateY(-3px)';
+        });
+        
+        button.addEventListener('mouseleave', () => {
+          button.style.transform = 'translateY(0)';
+        });
+        
+        button.addEventListener('click', () => {
+          button.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+            button.style.transform = 'scale(1)';
+          }, 100);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
