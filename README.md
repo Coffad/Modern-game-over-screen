@@ -2,7 +2,10 @@
 
 A beautifully designed **Game Over** screen with stunning animations, modern UI, and smooth transitions! 🔥
 
-![Preview](game-over-preview.gif)
+## 🎥 Game Over Screen Animation  
+
+![Game Over Screen](https://github.com/Coffad/Modern-game-over-screen/blob/main/Recording2025-03-06165610-ezgif.com-video-to-gif-converter.gif)
+
 
 ## ✨ Features:
 - 🚀 **Futuristic UI with glassmorphism**
